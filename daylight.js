@@ -19,13 +19,13 @@ function daylight(format, date) {
             return;
         }
 
-        output += _translate(date, let);
+        output += _translate(let, date);
     });
 
     return output;
 }
 
-function _translate(date, letter) {
+function _translate(letter, date) {
     if ( !(date instanceof Date) ) {
         date = new Date(date);
     }
@@ -109,7 +109,7 @@ function _translate(date, letter) {
         // two digit day
         case 'd': 
             var d = date.getDate(); 
-            return d.length === 1 ? "0" + d : d;
+            return d < 10 ? '0' + d : d;
             break;
 
         // three-letter day
@@ -127,7 +127,7 @@ function _translate(date, letter) {
             return day(date, false);
             break;
 
-        // correct numeric day of week
+        // numeric day of week, one-based
         case 'N':
             return date.getDay() + 1;
             break;
@@ -151,60 +151,93 @@ function _translate(date, letter) {
                 return null;
                 break;
             }
+
+        // zero-based numeric day of week
         case 'w':
             return date.getDay();
             break;
+
+        // numeric day of the year
         case 'z':
             // stolen from http://stackoverflow.com/a/8619946
             var janfirst = new Date(date.getFullYear(), 0, 0)
               , diff = date - janfirst;
             return Math.ceil(diff / (1000 * 60 * 60 * 24));
             break;
+
+        // month, full word        
         case 'F':
             return month(date, false);
             break;
+
+        // numeric month with leading zero            
         case 'm':
             var mo = date.getMonth() + 1;
-            return mo.toString().length === 1 ? "0" + mo : mo;
+            return mo < 10 ? '0' + mo : mo;
             break;
+
+        // month, abbreviated to three-letters
         case 'M':
             return month(date, true);
             break;
+
+        // numeric month without leading zero
         case 'n':
             return date.getMonth() + 1;
             break;
+
+        // four-digit year
         case 'Y':
             return date.getFullYear();
             break;
+
+        // two-digit year
         case 'y':
             return date.getFullYear().toString().substr(2);
             break;
+
+        // am or pm, lowercase
         case 'a':
             return date.getHours() > 11 ? 'pm' : 'am';
             break;
+
+        // AM or PM, uppercase
         case 'A':
             return date.getHours() > 11 ? 'PM' : 'AM';
             break;
+
+        // 12-hour format, no leading zero
         case 'g':
             return date.getHours() % 12;
             break;
+
+        // 24-hour format, no leading zero
         case 'G':
             return date.getHours();
             break;
+
+        // 12-hour format, leading zero
         case 'h':
             var h = date.getHours() % 12;
-            return h.toString().length === 1 ? '0' + h : h;
+            return h < 10 ? '0' + h : h;
+
+        // 24-hour format, leading zero
         case 'H':
             var h = date.getHours();
-            return h.toString().length === 1 ? '0' + h : h;
+            return h < 10 ? '0' + h : h;
             break;
+
+        // minutes, with leading zero
         case 'i':
-            var m = date.getMinutes(); console.log(m);
-            return m.toString().length === 1 ? '0' + m : m;
+            var m = date.getMinutes();
+            return m < 10 ? '0' + m : m;
             break;
+
+        // seconds, with leading zero
         case 's':
             var s = date.getSeconds();
-            return s.toString().length === 1 ? '0' + s : s;
+            return s < 10 ? '0' + s : s;
+        
         default:
             return letter;
             break;
