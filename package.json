@@ -1,0 +1,26 @@
+{
+  "name": "daylight",
+  "version": "0.1.0",
+  "description": "lightweight javascript date formatting",
+  "main": "daylight.js",
+  "dependencies": {
+    "tape": "^2.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malantonio/daylight"
+  },
+  "keywords": [
+    "date"
+  ],
+  "author": "Adam Malantonio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malantonio/daylight/issues"
+  },
+  "homepage": "https://github.com/malantonio/daylight"
+}
