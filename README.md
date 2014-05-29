@@ -1,7 +1,6 @@
 # daylight
 
-I absolutely love the [moment.js](http://momentjs.com) library, but at times it runs a bit heavier than I really need. I have a PHP background, and like the simplicity of the built-in `date()` function and wrote this to be sort of similar.
-
+I absolutely love the [moment.js](http://momentjs.com) library, but at times it runs a bit heavier than I really need. I like the simplicity of PHP's built-in `date()` function and wrote this to be sort of similar.
 
 ## usage
 
@@ -20,6 +19,8 @@ I absolutely love the [moment.js](http://momentjs.com) library, but at times it 
 ```
 
 ### using node
+
+install with `npm install daylight`, run tests with `npm test`, etc.
 
 ```javascript
 var daylight = require('daylight');
