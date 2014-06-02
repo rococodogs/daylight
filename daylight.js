@@ -1,6 +1,22 @@
+if ( typeof module !== 'undefined' ) {
+    module.exports = daylight;
+}
+
 function daylight(format, date) {
     if ( !(date instanceof Date) ) {
-        date = new Date(date);
+        if ( typeof date === 'string' ) {
+            if ( /^\d\d\d\d\-\d\d\-\d\d$/.test(date) ) {
+                d = date.split('-');
+                y = d[0];
+                m = d[1] - 1;
+                d = d[2];
+                date = new Date(y, m, d);
+            } else {
+                date = new Date(Date.parse(date));
+            }
+        } else {
+            date = new Date(date);
+        }
     }
 
     var output = ''
@@ -242,8 +258,4 @@ function _translate(letter, date) {
             return letter;
             break;
     }
-}
-
-if ( typeof module !== 'undefined' ) {
-    module.exports = daylight;
 }
