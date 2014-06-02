@@ -138,13 +138,13 @@ function _translate(letter, date) {
             if ( d === 1 ) { 
                 return 'st';
                 break;
-            } else if ( d === 2 || ( d.toString().match(/\d2$/) && !d.toString().match(/1\d$/) ) ) {
+            } else if ( d === 2 || ( /\d2$/.test(d.toString()) && !/1\d$/.test(d.toString()) ) ) {
                 return 'nd';
                 break;                
-            } else if ( d === 3 || ( d.toString().match(/\d3$/) && !d.toString().match(/1\d$/) ) ) {
+            } else if ( d === 3 || ( /\d3$/.test(d.toString()) && !/1\d$/.test(d.toString()) ) ) {
                 return 'rd';
                 break;
-            } else if ( d.toString().match(/1\d|[4567890]/) ) {
+            } else if ( /1\d|[4567890]/.test(d.toString()) ) {
                 return 'th';
                 break;
             } else {
