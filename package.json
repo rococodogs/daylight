@@ -3,10 +3,24 @@
   "version": "0.1.1",
   "description": "lightweight javascript date formatting",
   "main": "daylight.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "tape": "^2.13.1"
   },
-  "devDependencies": {},
+  "testling": {
+    "files": "test.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/latest",
+      "ipad/latest",
+      "android-browser/latest"
+    ]
+  },
+ 
   "scripts": {
     "test": "node test.js"
   },
