@@ -4,9 +4,12 @@ I absolutely love the [moment.js](http://momentjs.com) library, but at times it 
 
 ## usage
 
-### in the browser
-```html
+note: **daylight** does a rather rudimentary job parsing dates (strings are just passed through [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)), so beware of local timezone vs utc time-string pitfalls.
 
+### in the browser
+**TODO**: requirejs, commonjs, etc. module support
+
+```html
 <script src="daylight.js"></script>
 <script>
     var today = daylight('l, F jS', Date.now());
