@@ -1,6 +1,6 @@
 {
   "name": "daylight",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "lightweight javascript date formatting",
   "main": "daylight.js",
   "dependencies": {},
@@ -15,8 +15,8 @@
       "firefox/16..latest",
       "safari/latest",
       "opera/11.0..latest",
-      "iphone/latest",
-      "ipad/latest",
+      "iphone/6",
+      "ipad/6",
       "android-browser/latest"
     ]
   },
