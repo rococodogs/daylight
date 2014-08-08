@@ -4,14 +4,12 @@ if ( typeof module !== 'undefined' ) {
 
 function daylight(format, date) {
     if ( !(date instanceof Date) ) {
-        try {
-            if ( typeof date === 'string' ) {
-                date = new Date(Date.parse(date));
-            } else {
-                date = new Date(date)
-            }
-        } catch(e) {
-            throw Error(e);
+        if ( typeof date === 'string' ) {
+            var parsed = Date.parse(date);
+            if ( isNaN(parsed) ) { throw Error('Cannot parse \'' + date + '\''); }
+            date = new Date(parsed);
+        } else {
+            date = new Date(date)
         }
     }
 
