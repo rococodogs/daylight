@@ -154,7 +154,7 @@ test('twenty-four-hour format, no leading zero: G', function(t) {
 
 test('twelve-hour format, leading zero: h', function(t) {
     t.equal(formatDate('h', date), '09');
-    t.equal(formatDate('g', '2014/05/28 17:00:00'), '5');
+    t.equal(formatDate('h', '2014/05/28 17:00:00'), '05');
     t.equal(formatDate('h', '2014/05/28 00:00:00'), '12');
 
     t.end();
