@@ -1,6 +1,6 @@
 var test = require('tape');
 var formatDate = require('./daylight');
-var date = '2014/05/28 09:00:00';
+var date = new Date(2014, 4, 28, 23);
 
 test('formatDate works', function(t) {
     t.equal(formatDate('l, F dS Y', date), 'Wednesday, May 28th 2014');
@@ -8,12 +8,12 @@ test('formatDate works', function(t) {
 });
 
 test('date format: YYYY/MM/DD HH:MM:SS', function(t) {
-    t.equal(formatDate('Y/m/d H:i:s', '2014/05/28 23:00:00'), '2014/05/28 23:00:00');
+    t.equal(formatDate('Y/m/d H:i:s', date), '2014/05/28 23:00:00');
     t.end();
 });
 
 test('date format: YYYY/MM/DDTHH:MM:SS (UTC timezone)', function(t) {
-    t.equal(formatDate('Y-m-d\\TH:i:s', '2014-05-28T23:00:00'), '2014-05-28T19:00:00');
+    t.equal(formatDate('Y-m-d\\TH:i:s', date), '2014-05-28T23:00:00');
     t.end();
 });
 
@@ -124,21 +124,21 @@ test('two-digit year: y', function(t) {
 });
 
 test('am or pm, lowercase: a', function(t) {
-    t.equal(formatDate('a', date), 'am');
-    t.equal(formatDate('a', '2014/05/28 23:00:00'), 'pm');
+    t.equal(formatDate('a', '2014/05/28 03:00:00'), 'am');
+    t.equal(formatDate('a', date), 'pm');
 
     t.end();
 });
 
 test('AM or PM, uppercase: A', function(t) {
-    t.equal(formatDate('A', date), 'AM');
-    t.equal(formatDate('A', '2014/05/28 23:00:00'), 'PM');
+    t.equal(formatDate('A', '2014/05/28 03:00:00'), 'AM');
+    t.equal(formatDate('A', date), 'PM');
 
     t.end();
 });
 
 test('twelve-hour format, no leading zero: g', function(t) {
-    t.equal(formatDate('g', date), '9');
+    t.equal(formatDate('g', date), '11');
     t.equal(formatDate('g', '2014/05/28 17:00:00'), '5');
     t.equal(formatDate('g', '2014/05/28 00:00:00'), '12');
 
@@ -146,14 +146,14 @@ test('twelve-hour format, no leading zero: g', function(t) {
 });
 
 test('twenty-four-hour format, no leading zero: G', function(t) {
-    t.equal(formatDate('G', date), '9');
+    t.equal(formatDate('G', date), '23');
     t.equal(formatDate('G', '2014/05/28 17:00:00'), '17');
 
     t.end();
 });
 
 test('twelve-hour format, leading zero: h', function(t) {
-    t.equal(formatDate('h', date), '09');
+    t.equal(formatDate('h', date), '11');
     t.equal(formatDate('h', '2014/05/28 17:00:00'), '05');
     t.equal(formatDate('h', '2014/05/28 00:00:00'), '12');
 
@@ -161,8 +161,8 @@ test('twelve-hour format, leading zero: h', function(t) {
 });
 
 test('twenty-four-hour format, leading zero: H', function(t) {
-    t.equal(formatDate('H', date), '09');
-    t.equal(formatDate('H', '2014/05/28 17:00:00'), '17');
+    t.equal(formatDate('H', date), '23');
+    t.equal(formatDate('H', '2014/05/28 07:00:00'), '07');
 
     t.end();
 });
@@ -177,6 +177,14 @@ test('minutes, with leading zero: i', function(t) {
 test('seconds, with leading zero: s', function(t) {
     t.equal(formatDate('s', '2014/05/28 17:00:01'), '01');
     t.equal(formatDate('s', '2014/05/28 17:00:30'), '30');
+
+    t.end();
+});
+
+test('throws Error if not parseable', function(t) {
+    t.throws(function() {
+        formatDate('a', '20140505T12:12:12');
+    });
 
     t.end();
 });
