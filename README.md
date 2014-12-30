@@ -1,6 +1,6 @@
 # daylight
 
-[![testling](https://ci.testling.com/malantonio/daylight.png)](https://ci.testling.com/malantonio/daylight)
+[![Build Status](https://travis-ci.org/malantonio/daylight.svg)](https://travis-ci.org/malantonio/daylight)
 
 I absolutely love the [moment.js](http://momentjs.com) library, but at times it runs a bit heavier than I really need. I like the simplicity of PHP's built-in `date()` function and wrote this to be sort of similar.
 

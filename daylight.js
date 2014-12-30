@@ -177,7 +177,7 @@ function _translate(letter, date) {
 
         // 12-hour format, no leading zero
         case 'g':
-            return date.getHours() == 0 ? 12 : date.getHours() % 12;
+            return date.getHours() === 0 ? 12 : date.getHours() % 12;
 
         // 24-hour format, no leading zero
         case 'G':
@@ -185,7 +185,7 @@ function _translate(letter, date) {
 
         // 12-hour format, leading zero
         case 'h':
-            var h = date.getHours() == 0 ? 12 : date.getHours() % 12;
+            var h = date.getHours() === 0 ? 12 : date.getHours() % 12;
             return h < 10 ? '0' + h : h;
 
         // 24-hour format, leading zero

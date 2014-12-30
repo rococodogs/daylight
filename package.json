@@ -1,26 +1,12 @@
 {
   "name": "daylight",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "lightweight javascript date formatting",
   "main": "daylight.js",
   "dependencies": {},
   "devDependencies": {
-    "tape": "^2.13.1"
+    "tape": "~3.0.2"
   },
-  "testling": {
-    "files": "test.js",
-    "browsers": [
-      "ie/6..latest",
-      "chrome/22..latest",
-      "firefox/16..latest",
-      "safari/latest",
-      "opera/11.0..latest",
-      "iphone/6",
-      "ipad/6",
-      "android-browser/latest"
-    ]
-  },
- 
   "scripts": {
     "test": "node test.js"
   },
